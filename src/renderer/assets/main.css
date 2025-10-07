@@ -1,0 +1,78 @@
+@import './base.css';
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-size: cover;
+  user-select: none;
+}
+
+code {
+  font-weight: 600;
+  padding: 3px 5px;
+  border-radius: 2px;
+  background-color: var(--color-background-mute);
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    SF Mono,
+    Menlo,
+    Consolas,
+    Liberation Mono,
+    monospace;
+  font-size: 85%;
+}
+
+#app {
+  padding: 1rem;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#Translate-area{
+  display: flex;
+  height: 70%;
+  width: 100%;
+  margin-top: 25px;
+  font-size: large;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.bt-select{
+  margin-top: 1rem;
+  width: 120px;
+  height: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--ev-c-gray-2);
+  color: var(--color-text);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .text {
+    font-size: 20px;
+  }
+}
+@media (max-width: 620px) {
+  .versions {
+    display: none;
+  }
+}
+@media (max-width: 350px) {
+  .tip,
+  .actions {
+    display: none;
+  }
+}
