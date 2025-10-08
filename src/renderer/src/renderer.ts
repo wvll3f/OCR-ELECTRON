@@ -4,7 +4,23 @@ import { createWorker } from 'tesseract.js'
 declare global {
   interface Window {
     api: {
-      openTransparentWindow: () => void
+      testeSelection: () => void
+      startAreaSelection: () => Promise<void>
+      stopAreaSelection: () => Promise<void>
+      getSources: () => Promise<unknown> // Use a specific type if known, otherwise 'unknown'
+      captureArea: (area: {
+        x: number
+        y: number
+        width: number
+        height: number
+      }) => Promise<{ success: boolean }>
+      onAreaSelected: (
+        callback: (
+          event: Electron.IpcRendererEvent,
+          area: { x: number; y: number; width: number; height: number }
+        ) => void
+      ) => Electron.IpcRenderer
+      removeAllListeners: (channel: string) => Electron.IpcRenderer
     }
   }
 }
@@ -26,6 +42,6 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.bt-select').click(async function () {
-    window.api.openTransparentWindow()
+    window.api.startAreaSelection()
   })
 })

@@ -2,7 +2,13 @@ import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
 const api = {
-  openTransparentWindow: (): void => ipcRenderer.send('open-new-window')
+  testeSelection: (): void => ipcRenderer.send('start-selection'),
+  startAreaSelection: () => ipcRenderer.invoke('start-area-selection'),
+  stopAreaSelection: () => ipcRenderer.invoke('stop-area-selection'),
+  getSources: () => ipcRenderer.invoke('get-sources'),
+  captureArea: (area) => ipcRenderer.invoke('capture-area', area),
+  onAreaSelected: (callback) => ipcRenderer.on('area-selected', callback),
+  removeAllListeners: (channel) => ipcRenderer.removeAllListeners(channel)
 }
 
 if (process.contextIsolated) {
